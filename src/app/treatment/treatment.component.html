@@ -1,0 +1,123 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-9 col-md-offset-1 col-xs-10">
+        <div
+
+          ng-click="panelOpenClose($event)"
+          data-toggle="collapse"
+        >
+          <div class="pull-left">
+            <p>
+              <i class="fa fa-star truncate unCollapsedImg resizeCollapse"></i>
+            </p>
+          </div>
+          <div class="pull-left">
+            <span class="treatmentTrialTitle">{{ node.name }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 col-xs-1">
+        <div
+          id="color_{{ node.treatment_index }}"
+
+          colorpicker-position="top"
+          ng-model="node.color"
+          ng-change="plotVm.autoApplyChanges()"
+       
+          style="background-color: {{ node.color }}"
+        ></div>
+      </div>
+      <div class="col-md-1 col-xs-1">
+        <div>
+          <i
+            class="fa fa-camera"
+            aria-hidden="true"
+            ng-model="node.showTreatment"
+            ng-click="pointCameraAtNode(node)"
+          ></i>
+        </div>
+        <div>
+          <i
+            class="fa"
+            ng-class="node.showTreatment ? 'fa-eye' : 'fa-eye-slash'"
+            aria-hidden="true"
+            ng-model="node.showTreatment"
+            ng-click="showHideTreatment(node)"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    id="node_{{ node.treatment_index }}"
+    class="panel-collapse collapse left-padding-15"
+  >
+    <div class="row row-padding">
+      <div class="trialName col-md-11 col-md-offset-1">
+        <label class="control-label">Treatment Name</label>
+        <div class="form-group no-label">
+          <input
+            class="form-control input-sm"
+            type="text"
+            placeholder="Default"
+            id="name_{{ node.treatment_index }}"
+            value="{{ node.name }}"
+            ng-model="node.name"
+            ng-change="plotVm.autoApplyChanges()"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row row-padding">
+      <div class="trialValue col-md-11 col-md-offset-1">
+        <label class="control-label">Weighting</label>
+        <div class="form-group no-label">
+          <input
+            class="form-control input-sm"
+            type="text"
+            placeholder="Default"
+            id="weight_{{ node.treatment_index }}"
+            value="{{ node.weighting }}"
+            ng-model="node.weighting"
+            ng-change="plotVm.autoApplyChanges()"
+          />
+        </div>
+      </div>
+    </div>
+    <div><BR /></div>
+    <div class="row row-padding" ng-if="!node.basenode">
+      <div class="col-md-11 col-md-offset-1">
+        <label class="text-center width100percent">alter x-axis</label>
+      </div>
+    </div>
+    <div
+      class="row row-padding col-md-11 col-md-offset-1"
+      ng-if="!node.basenode"
+    >
+      <div class="col-md-4"><strong>Minimum</strong></div>
+      <div class="col-md-4 text-center">
+        <i class="fa fa-arrows-h" aria-hidden="true"></i>
+      </div>
+      <div class="col-md-4 text-right"><strong>Maximum</strong></div>
+    </div>
+    <div class="row row-padding" ng-if="!node.basenode"></div>
+    <div class="row row-padding" ng-if="!node.basenode">
+      <div class="col-md-11 col-md-offset-1">
+        <label class="text-center width100percent">alter y-axis</label>
+      </div>
+    </div>
+    <div
+      class="row row-padding col-md-11 col-md-offset-1"
+      ng-if="!node.basenode"
+    >
+      <div class="col-md-4"><strong>Minimum</strong></div>
+      <div class="col-md-4 text-center">
+        <i class="fa fa-arrows-v" aria-hidden="true"></i>
+      </div>
+      <div class="col-md-4 text-right"><strong>Maximum</strong></div>
+    </div>
+    <div class="row row-padding" ng-if="!node.basenode"></div>
+    <hr />
+  </div>
+</div>

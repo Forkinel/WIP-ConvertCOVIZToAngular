@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12"></div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <span class="notices-header-text"
+              >Treatments ({{ treatmentsCount }})</span
+            >
+          </div>
+          <div class="row">
+            <app-treatment
+              *ngFor="let treatment of treatments"
+              [node]="treatment"
+            ></app-treatment>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        id="plotContainer"
+        class="plotContainerDiv"
+        style="width: 500px; height: 500px"
+      ></div>
+    </div>
+  </div>
+</div>
